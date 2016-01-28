@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tyler Bourque</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternative" href="/atom.xml" title="Tyler Bourque" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/boot.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+<body>
+  <div id="main-container">
+    <div id="my-name">Tyler Bourque</div>
+    <div id="my-title">Full Stack Developer</div>
+    <div id="page">
+      <div class="left-col ">
+                <h3 class="title-sm">About</h3>
+        <img src="http://www.gravatar.com/avatar/8ddcb5387b0e1bd327fe444a4f0c3047?s=200" alt="profile" class="profile-img" />
+        <h4>Summary</h4>
+        <p>
+          Hi, I am a Full Stack Developer living in Ontario, Canada. I recently graduated from Centennial College with a diploma in Software Engineering.
+          I am currently working as a contractor building single page applications using JavaScript, C# and Node.js. I completed two co-op semesters
+          before being hired as a full time Developer and completing school part time.
+
+        </p>
+        <h4>My Experience</h4>
+        <p>
+          I have experience building several different types of single page applications primarily using Ember.js. My role in building theses applications
+          is developing both the client and server side code. I have also built MVC applications using Node.js and Sails.js.
+        </p>
+        <h4>Projects</h4>
+        <p>
+          I like working on projects that allow users to automate tasks in their daily life. One of these examples is an app called WaterMarker.
+          The app is designed to allow a photographer to quickly and easily watermark their images.
+        </p>
+        <p>
+           The following is a list of my side projects that I have worked on and I am currently working on.
+        </p>
+        <div class="sm-indent">
+          <h5>WaterMarker</h5>
+          <p>
+            WaterMarker is a simple application that can run on any Desktop: Windows, Mac or Linux.
+            The application will allow a user too quickly and efficiently watermark bulk sets of images
+            with either text or a predefined images. (The project is currently in development and will have a release shortly)
+          </p>
+        </div>
+        <div class="sm-indent">
+          <h5><a href="http://nickjanzenphotography.ca/">Nick Janzen Photography</a></h5>
+          <p>
+            This Project consisted of theme customization including adding custom html and css
+            to the Wordpress theme. I also played a key role in SEO and building a custom components
+          </p>
+        </div>
+
+        
+      </div>
+      <div id="mobile-nav-menu" onclick="toggleNav()">
+
+      </div>
+      <div id="mobile-menu">
+        <div class="mobile-menu-item">
+          <a href="/"><img src="/images/Icons/user.png" class="menu-icon" alt="" />
+          About Me</a>
+        </div>
+        <div class="mobile-menu-item">
+          <a href="/Experience-Skills/"><img src="/images/Icons/document.png" class="menu-icon" alt="" />
+          Experience & Skills</a>
+        </div>
+        <div class="mobile-menu-item">
+            <a href="/Portfolio/"><img src="/images/Icons/portfolio.png" class="menu-icon" alt="" />
+          Portfolio</a>
+        </div>
+        <div class="mobile-menu-item">
+            <a href="/Contact-Me/"><img src="/images/Icons/email.png" class="menu-icon" alt="" />
+          Contact Me</a>
+        </div>
+        <!--
+        <div class="mobile-menu-item">
+            <a href="/Blog/"><img src="/images/Icons/blog.png" class="menu-icon" alt="" />
+          Blog</a>
+        </div>
+      -->
+      </div>
+      <div class="right-col float-right">
+        <a href="/" class="no-deco">
+        
+        <div class="full-menu-item">
+        
+          <img src="/images/Icons/user.png" class="menu-icon" alt="" />
+             About Me
+        </div>
+        </a>
+        <a href="/Experience-Skills/" class="no-deco">
+        
+        <div class="full-menu-item">
+        
+          <img src="/images/Icons/document.png" class="menu-icon" alt="" />
+            Experience & Skills
+        </div>
+        </a>
+        <a href="/Portfolio/" class="no-deco">
+        
+        <div class="full-menu-item">
+        
+          <img src="/images/Icons/portfolio.png" class="menu-icon" alt="" />
+            Portfolio
+        </div>
+        </a>
+        <a href="/Contact-Me/" class="no-deco">
+        
+        <div class="full-menu-item">
+        
+          <img src="/images/Icons/email.png" class="menu-icon" alt="" />
+            Contact Me
+        </div>
+        </a>
+        <!--
+        <a href="/Blog/" class="no-deco">
+        
+        <div class="full-menu-item">
+        
+          <img src="/images/Icons/blog.png" class="menu-icon" alt="" />
+            Blog
+        </div>
+        </a>
+      -->
+      </div>
+    </div>
+  </div>
+  <div id="mobile-cover">
+
+  </div>
+  <script type="text/javascript">
+  function toggleNav() {
+    console.log(document.getElementById('mobile-menu').offsetWidth < 100);
+    if(document.getElementById('mobile-menu').offsetWidth < 100){
+      document.getElementById('mobile-menu').style.width = "200px"
+      document.getElementById('mobile-cover').style.display = "block";
+      document.getElementById('mobile-nav-menu').style.marginRight = "205px"
+    } else {
+      document.getElementById('mobile-menu').style.width = "0px";
+      document.getElementById('mobile-cover').style.display = "none";
+      document.getElementById('mobile-nav-menu').style.marginRight = "20px";
+    }
+  }
+  document.addEventListener('touchstart', handleTouchStart, false);
+  document.addEventListener('touchmove', handleTouchMove, false);
+
+  var xDown = null;
+  var yDown = null;
+
+  function handleTouchStart(evt) {
+    xDown = evt.touches[0].clientX;
+    yDown = evt.touches[0].clientY;
+  };
+
+  function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+      return;
+    }
+
+    var xUp = evt.touches[0].clientX;
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+      if ( xDiff > 0 ) {
+        if(document.getElementById('mobile-menu').offsetWidth < 100){
+          toggleNav();
+        }
+      } else {
+        if(document.getElementById('mobile-menu').offsetWidth > 100){
+          toggleNav() ;
+        }
+      }
+    } else {
+      if ( yDiff > 0 ) {
+        /* up swipe */
+      } else {
+        /* down swipe */
+      }
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;
+  };
+
+  </script>
+</body>
+</html>

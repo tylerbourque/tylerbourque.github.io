@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css?family=Aldrich");
+body,
+html {
+  width: 100%;
+  min-height: 90%;
+  min-width: 320px;
+  margin: 0px;
+  font-family: 'Aldrich', sans-serif;
+  background-color: transparent;
+}
+html {
+  background-image: url("/images/bg.png");
+}
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+a:focus {
+  color: #23527c;
+  text-decoration: underline;
+}
+#main-container {
+  width: 90%;
+  max-width: 900px;
+  min-height: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#page {
+  box-shadow: 0px 0px 20px #888;
+  display: inline-block;
+  min-height: 500px;
+  background: rgba(255,255,255,0.95);
+  width: 100%;
+  margin-bottom: 50px;
+/*  position:relative;*/
+}
+#my-name {
+  padding-left: 10px;
+  font-size: 300%;
+  color: #fff;
+  margin-top: 20px;
+}
+#my-title {
+  padding-left: 20px;
+  font-size: 200%;
+  color: #00adba;
+  margin-bottom: 20px;
+}
+.left-col {
+  margin: 20px;
+  word-wrap: normal;
+  font-size: 70%;
+  width: 60%;
+  display: inline-block;
+}
+.right-col {
+  width: 250px;
+  display: inline-block;
+}
+.title-sm {
+  margin-top: 5px;
+}
+.sm-indent {
+  padding-left: 10px;
+}
+.float-right {
+  float: right;
+}
+.profile-img {
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  width: 150px;
+}
+.full-menu-item {
+  width: 100%;
+  height: 50px;
+  background: #000;
+}
+.full-menu-item:hover {
+  cursor: pointer;
+  background: #d3d3d3;
+  transition: background 0.5s;
+}
+#mobile-cover {
+  background: #525252;
+  opacity: 0.7;
+  display: none;
+  position: fixed;
+  height: 150%;
+  width: 100%;
+  z-index: 50;
+  top: 0px;
+  transition: opacity 1.5s linear;
+}
+#mobile-menu {
+  z-index: 100;
+/*  box-shadow: -5px 1px 5px #888888;*/
+}
+.mobile-menu-item {
+  white-space: nowrap;
+}
+.menu-icon {
+  width: 30px;
+  height: auto;
+  margin: 10px;
+}
+.skill {
+  font-size: 160%;
+  margin: 10px;
+}
+.menu-selected {
+  background: rgba(255,255,255,0.1);
+}
+.pg-bar {
+  background-color: #5cb85c !important;
+  -webkit-transition: width 1.5s ease !important;
+  -o-transition: width 1.5s ease !important;
+  transition: width 1.5s ease !important;
+}
+#mobile-nav-menu {
+  z-index: 75;
+}
+@media only screen and (min-width: 753px) {
+  #mobile-nav-menu {
+    display: none;
+  }
+  #mobile-menu {
+    display: none;
+  }
+}
+@media only screen and (max-width: 752px) {
+  #mobile-menu {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 0px;
+    height: 120%;
+    background-color: #fff;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: width 0.5s;
+    transition: width 0.5s;
+  }
+  #mobile-nav-menu:hover {
+    cursor: pointer;
+  }
+  .left-col {
+    width: 85%;
+  }
+  .right-col {
+    display: none;
+  }
+  #mobile-nav-menu {
+    display: block;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    background-image: url("/images/Icons/menu.png");
+    background-size: contain;
+    margin: 5px;
+    margin-right: 20px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: margin-right 0.5s;
+    transition: margin-right 0.5s;
+  }
+}
+@media only screen and (max-width: 840px) and (min-width: 753px) {
+  .left-col {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 940px) and (min-width: 840px) {
+  .left-col {
+    width: 55%;
+  }
+}
+@media only screen and (min-width: 420px) {
+  #mobile-nav-menu {
+    margin-right: 40px;
+  }
+}
+@media only screen and (max-width: 450px) {
+  #my-name {
+    font-size: 220%;
+  }
+  #my-title {
+    font-size: 120%;
+  }
+  .profile-img {
+    width: 200px;
+    float: none;
+  }
+}

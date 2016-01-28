@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Tyler Bourque</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternative" href="/atom.xml" title="Tyler Bourque" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/boot.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+</head>
+
+<body>
+  <div id="main-container">
+    <div id="my-name">Tyler Bourque</div>
+    <div id="my-title">Full Stack Developer</div>
+    <div id="page">
+      <div class="left-col ">
+        <h3>Contact Me</h3>
+<p>
+  Email Me at: <a href="mailto:tyler@tylerbourque.com?Subject=Hello" target="_top">tyler@tylerbourque.com</a>
+</p>
+<p>
+  or find me here:
+</p>
+<div class="row">
+<a href="https://github.com/tylerbourque" target="_blank" rel="external">  <div class="col-md-3" style="padding-bottom:20px;"><img src="/images/Icons/github.png" alt=""></div></a>
+<a href="https://twitter.com/tyler__bourque" target="_blank" rel="external">  <div class="col-md-3" style="padding-bottom:20px;"><img src="/images/Icons/linkedin.png" alt=""></div></a>
+<a href="http://stackoverflow.com/users/3645291/tbourque" target="_blank" rel="external">  <div class="col-md-3" style="padding-bottom:20px;"><img src="/images/Icons/stack.png" alt=""></div></a>
+<a href="https://ca.linkedin.com/in/tyler-bourque-0a098987" target="_blank" rel="external">  <div class="col-md-3" style="padding-bottom:20px;"><img src="/images/Icons/twitter.png" alt=""></div></a>
+</div>
+
+
+        
+      </div>
+      <div id="mobile-nav-menu" onclick="toggleNav()">
+
+      </div>
+      <div id="mobile-menu">
+        <div class="mobile-menu-item">
+          <a href="/"><img src="/images/Icons/user.png" class="menu-icon" alt="" />
+          About Me</a>
+        </div>
+        <div class="mobile-menu-item">
+          <a href="/Experience-Skills/"><img src="/images/Icons/document.png" class="menu-icon" alt="" />
+          Experience & Skills</a>
+        </div>
+        <div class="mobile-menu-item">
+            <a href="/Portfolio/"><img src="/images/Icons/portfolio.png" class="menu-icon" alt="" />
+          Portfolio</a>
+        </div>
+        <div class="mobile-menu-item">
+            <a href="/Contact-Me/"><img src="/images/Icons/email.png" class="menu-icon" alt="" />
+          Contact Me</a>
+        </div>
+        <!--
+        <div class="mobile-menu-item">
+            <a href="/Blog/"><img src="/images/Icons/blog.png" class="menu-icon" alt="" />
+          Blog</a>
+        </div>
+      -->
+      </div>
+      <div class="right-col float-right">
+        <a href="/" class="no-deco">
+        
+        <div class="full-menu-item">
+        
+          <img src="/images/Icons/user.png" class="menu-icon" alt="" />
+             About Me
+        </div>
+        </a>
+        <a href="/Experience-Skills/" class="no-deco">
+        
+        <div class="full-menu-item">
+        
+          <img src="/images/Icons/document.png" class="menu-icon" alt="" />
+            Experience & Skills
+        </div>
+        </a>
+        <a href="/Portfolio/" class="no-deco">
+        
+        <div class="full-menu-item">
+        
+          <img src="/images/Icons/portfolio.png" class="menu-icon" alt="" />
+            Portfolio
+        </div>
+        </a>
+        <a href="/Contact-Me/" class="no-deco">
+        
+        <div class="full-menu-item menu-selected">
+        
+          <img src="/images/Icons/email.png" class="menu-icon" alt="" />
+            Contact Me
+        </div>
+        </a>
+        <!--
+        <a href="/Blog/" class="no-deco">
+        
+        <div class="full-menu-item">
+        
+          <img src="/images/Icons/blog.png" class="menu-icon" alt="" />
+            Blog
+        </div>
+        </a>
+      -->
+      </div>
+    </div>
+  </div>
+  <div id="mobile-cover">
+
+  </div>
+  <script type="text/javascript">
+  function toggleNav() {
+    console.log(document.getElementById('mobile-menu').offsetWidth < 100);
+    if(document.getElementById('mobile-menu').offsetWidth < 100){
+      document.getElementById('mobile-menu').style.width = "200px"
+      document.getElementById('mobile-cover').style.display = "block";
+      document.getElementById('mobile-nav-menu').style.marginRight = "205px"
+    } else {
+      document.getElementById('mobile-menu').style.width = "0px";
+      document.getElementById('mobile-cover').style.display = "none";
+      document.getElementById('mobile-nav-menu').style.marginRight = "20px";
+    }
+  }
+  document.addEventListener('touchstart', handleTouchStart, false);
+  document.addEventListener('touchmove', handleTouchMove, false);
+
+  var xDown = null;
+  var yDown = null;
+
+  function handleTouchStart(evt) {
+    xDown = evt.touches[0].clientX;
+    yDown = evt.touches[0].clientY;
+  };
+
+  function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+      return;
+    }
+
+    var xUp = evt.touches[0].clientX;
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+      if ( xDiff > 0 ) {
+        if(document.getElementById('mobile-menu').offsetWidth < 100){
+          toggleNav();
+        }
+      } else {
+        if(document.getElementById('mobile-menu').offsetWidth > 100){
+          toggleNav() ;
+        }
+      }
+    } else {
+      if ( yDiff > 0 ) {
+        /* up swipe */
+      } else {
+        /* down swipe */
+      }
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;
+  };
+
+  </script>
+</body>
+</html>
