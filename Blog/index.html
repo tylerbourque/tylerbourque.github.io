@@ -5,6 +5,8 @@
   
   <title>Tyler Bourque</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="Description" content="I am a Full Stack Developer living in Ontario, Canada. I recently graduated from Centennial College with a diploma in Software Engineering. I am currently working as a contractor building single page applications using JavaScript, C# and Node.js">
+  <meta name="Keywords" content="Tyler Bourque Developer Full Stack">
   
     <link rel="alternative" href="/atom.xml" title="Tyler Bourque" type="application/atom+xml">
   
@@ -109,6 +111,9 @@ How does it happpen?A race condition is a condition in which a portion of c...
   <div id="mobile-cover">
 
   </div>
+  <div id="loadingScreen">
+    <img src="/images/Icons/loading.gif" alt="" />
+  </div>
   <script type="text/javascript">
   function toggleNav() {
     console.log(document.getElementById('mobile-menu').offsetWidth < 100);
@@ -166,6 +171,11 @@ How does it happpen?A race condition is a condition in which a portion of c...
     yDown = null;
   };
 
+  </script>
+  <script>
+window.onload = function() {
+  document.getElementById('loadingScreen').style.display = "none";
+};
   </script>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
