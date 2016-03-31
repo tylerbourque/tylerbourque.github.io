@@ -84,10 +84,10 @@ a:focus {
   float: right;
 }
 .profile-img {
-  float: left;
+  float: left !important;
   margin-right: 10px;
   margin-bottom: 10px;
-  width: 150px;
+  width: 150px !important;
 }
 .full-menu-item {
   width: 100%;
@@ -98,6 +98,11 @@ a:focus {
   cursor: pointer;
   background: #d3d3d3;
   transition: background 0.5s;
+}
+#page .left-col img {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 #mobile-cover {
   background: #525252;
@@ -206,7 +211,7 @@ a:focus {
     font-size: 120%;
   }
   .profile-img {
-    width: 200px;
-    float: none;
+    width: 200px !important;
+    float: none !important;
   }
 }
