@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tyler Bourque</title>
+  <title>The JavaScript Event Loop | Tyler Bourque</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="Description" content="I am a Full Stack Developer living in Ontario, Canada. I recently graduated from Centennial College with a diploma in Software Engineering. I am currently working as a contractor building single page applications using JavaScript, C# and Node.js">
   <meta name="Keywords" content="Tyler Bourque Developer Full Stack">
@@ -24,19 +24,17 @@
     <div id="my-title">Full Stack Developer</div>
     <div id="page">
       <div class="left-col ">
-        <h3>Blog</h3>
+        <h2 id="How_does_JavaScript_do_stuff_3F"><a href="#How_does_JavaScript_do_stuff_3F" class="headerlink" title="How does JavaScript do stuff?"></a>How does JavaScript do stuff?</h2><p>Many people say JavaScript is an easy language and any programmer should start there. DO NOT learn programming in JavaScript if you have not used another language before. Why? simply put JavaScript is weird it does not work like other languages even though it appears that it does. One of the very strange things that it does it called The Event loop</p>
+<p>Take this code for example.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>.now());</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Begin....'</span>);</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">Date</span>.now());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'after timeout'</span>);</span><br><span class="line">&#125;,<span class="number">1</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>.now());</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'End....'</span>);</span><br></pre></td></tr></table></figure>
+<p>In this example it will log Begin and then End. after 1 millisecond seconds it will log after timeout. giving us the timestamps in milliseconds before the log. If you run this code you will get the three timestamps. now if you notice the difference between the last two timestamps. the difference is not a millisecond. The reason for this is because of the event loop.</p>
+<p><img src="/images/Posts/jsBin-EventLoop.png" alt="loading"></p>
+<p>Notice the difference of 1459447583819 and 1459447583825 is 6 milliseconds and the timeout should have been 1.</p>
+<h3 id="Alright_so_how_does_that_work_3F"><a href="#Alright_so_how_does_that_work_3F" class="headerlink" title="Alright so how does that work?"></a>Alright so how does that work?</h3><p>Simple the event loop picks up all the next task in the task queue after the current stack has finished. So when you make a call to setTimeout you tell the browser to start a timer and give it the callback.(the function to call when it is done. in this case…</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="built_in">Date</span>.now());</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'after timeout'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>once the timer is done it places the callback into the task queue. which is just a queue of all the tasks that need to be done in order. So all the event loop does is watch the  stack and when it is empty(all the current code has been executed). It will get the next task and put it into the stack to be executed and it will continuously does this. Thus the name “Event Loop”.</p>
 
 
-        
-          
-        <h5 class="no-deco"> <a href="/2016/03/31/the-javascript-event-loop/" title="The JavaScript Event Loop">The JavaScript Event Loop</a></h5>
-            How does JavaScript do stuff?Many people say JavaScript is an easy language and any programmer should start there. DO NOT learn programming in JavaScript if you have not used another language before. Why? simply put JavaScript is weird it does not work like other languages even though it appears that it does. One of the very strange things that it does it called The Event loop
-Take this code for e...
-          
-        <h5 class="no-deco"> <a href="/2016/01/25/racing-with-ember/" title="Racing With Ember">Racing With Ember</a></h5>
-            Racing With EmberEmber.js is a very powerful framework that has several advantages including rapid development and maintenance. In general a race condition can occur in  many different programing languages on many different platforms. I wanted to share my experience with Ember and how issues with race conditions can occur.
-How does it happpen?A race condition is a condition in which a portion of c...
-          
         
       </div>
       <div id="mobile-nav-menu" onclick="toggleNav()">

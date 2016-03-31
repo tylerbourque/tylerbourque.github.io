@@ -25,8 +25,12 @@
     <div id="page">
       <div class="left-col ">
         <h2 id="Racing_With_Ember"><a href="#Racing_With_Ember" class="headerlink" title="Racing With Ember"></a>Racing With Ember</h2><p>Ember.js is a very powerful framework that has several advantages including rapid development and maintenance. In general a race condition can occur in  many different programing languages on many different platforms. I wanted to share my experience with Ember and how issues with race conditions can occur.</p>
-<h3 id="How_does_it_happpen_3F"><a href="#How_does_it_happpen_3F" class="headerlink" title="How does it happpen?"></a>How does it happpen?</h3><p>A race condition is a condition in which a portion of code is executed on multiple threads causing unexpected behavior. So in the Single Page Application world this occurs because of asynchronous requests.  So in client side JavaScript this usually happens due to Ajax requests. so as an example if I have the following code…</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jQuery.ajax(&#123;</span><br><span class="line">  url: <span class="string">"http://slow.server.net/doWork"</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">                    successmessage = <span class="string">'Data was succesfully captured'</span>;</span><br><span class="line">                &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="How_does_it_happpen_3F"><a href="#How_does_it_happpen_3F" class="headerlink" title="How does it happpen?"></a>How does it happpen?</h3><p>A race condition is a condition in which a portion of code is executed on multiple threads causing unexpected behavior. So in the Single Page Application world this occurs because of asynchronous requests(Javascript executes in an event loop.. <a href="/2016/3/31/the-javascript-event-loop">more info here</a>).  So in client side JavaScript this usually happens due to Ajax requests. so as an example if I have the following code…</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  url: <span class="string">"http://slow.server.net/doWork"</span>,</span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">                    successmessage = <span class="string">'Data was succesfully captured'</span>;</span><br><span class="line">                &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>In ember when you call for instance <code>item.set(&#39;isSelected&#39;,false)</code> this does not actually happen until the event loop finishes and comes back around. This is why you must use <code>item.get(&#39;isSelected&#39;)</code> because this does the same thing so it will be called after <code>item.set(&#39;isSelected&#39;,false)</code> is excuted.</p>
+<p>The real way this can get complicated is when for instance you are manipulating a collection. In my case I found that it happened when you update a collection after an Ajax call. if you update the collection while this the call is in progress you may experience some strange behavior that is very difficult to track down.</p>
+<h3 id="My_Advise"><a href="#My_Advise" class="headerlink" title="My Advise"></a>My Advise</h3><p>So my advise is to stop the user from updating the collection until the process is finished. This will avoid the problem entirely and stop the mysterious bugs from occurring in the first place. As a side note, interestingly enough YouTube website does this when you try to do bulk actions on videos…</p>
+<p><img src="/images/Posts/youtubeLoading.png" alt="loading"></p>
 
 
         
@@ -51,12 +55,10 @@
             <a href="/Contact-Me/"><img src="/images/Icons/email.png" class="menu-icon" alt="" />
           Contact Me</a>
         </div>
-        <!--
         <div class="mobile-menu-item">
             <a href="/Blog/"><img src="/images/Icons/blog.png" class="menu-icon" alt="" />
           Blog</a>
         </div>
-      -->
       </div>
       <div class="right-col float-right">
         <a href="/" class="no-deco">
@@ -91,7 +93,6 @@
             Contact Me
         </div>
         </a>
-        <!--
         <a href="/Blog/" class="no-deco">
         
         <div class="full-menu-item">
@@ -100,7 +101,6 @@
             Blog
         </div>
         </a>
-      -->
       </div>
     </div>
   </div>
